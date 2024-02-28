@@ -12,6 +12,31 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.añadir-entrega-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.altaEntrega {
+  display: flex;
+  justify-content: center;
+}
+
+.buscar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.numero-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.numero-container input {
+  margin-left: 10px;
+}
 
 .App-header {
   background-color: #282c34;

@@ -3,6 +3,7 @@ import {Routes,Route} from 'react-router-dom';
 import Layout from "./pages/Layout";
 import ListaBonos from './pages/ListaBonos';
 import ListaBonosEntregados from './pages/ListaBonosEntregados';
+import AñadirEntrega from './pages/AñadirEntrega';
 import Inicio from './pages/Inicio';
 import React, { useEffect, useState, useRef } from 'react';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Inicio/>}/>
           <Route path="ListaBonos" element={<ListaBonos/>}/>
           <Route path="ListaBonosEntregados" element={<ListaBonosEntregados apiData={apiData}/>}/>
+          <Route path="AñadirEntrega" element={<AñadirEntrega/>}/>
           <Route path="*" element={<Inicio/>}/> 
 
         </Route>

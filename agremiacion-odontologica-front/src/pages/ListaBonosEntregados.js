@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Routes,Route,Link} from 'react-router-dom';
+import AñadirEntrega from './AñadirEntrega'; // Importa AñadirEntrega sin el directorio 'pages'
+
 
 const ListaBonos = ({ apiData }) => {
 
@@ -42,7 +45,9 @@ const ListaBonos = ({ apiData }) => {
                     value={filtroObraSocial}
                     onChange={handleFiltroObraSocialChange}
                 />
-                <button>Añadir entrega</button>
+                <Link to="/AñadirEntrega">
+                    <button>Añadir entrega</button>
+                </Link>
             </div>
             <table className="table table-hover table-dark">
                 <thead>

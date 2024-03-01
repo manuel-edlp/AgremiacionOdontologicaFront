@@ -1,63 +1,75 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('./dientes.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+/* Contenedor principal */
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* Contenedor de añadir entrega */
 .añadir-entrega-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
+/* Botón de alta de entrega */
 .altaEntrega {
-  display: flex;
-  justify-content: center;
+  margin-top: 20px;
 }
 
+/* Contenedor de búsqueda */
 .buscar-container {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.numero-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+
+/* Estilos para los botones */
+.listaBonos-boton,
+.entregados-boton {
+  display: block;
+  width: 80%; /* Anchura relativa */
+  max-width: 450px; /* Anchura máxima */
+  padding: 40px;
+  margin: 90px auto; /* Modificado para mayor consistencia */
+  border: 4px solid #000; /* Borde negro */
+  border-radius: 15px;
+  background-color: #9933ff;
+  color: #000; /* Texto negro */
+  font-size: 2vw; /* Tamaño de fuente relativo */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Eliminar subrayado */
 }
 
-.numero-container input {
-  margin-left: 10px;
+/* Estilo al pasar el ratón por encima del botón */
+.listaBonos-boton:hover,
+.entregados-boton:hover {
+  background-color: #6a00d5; /* Cambio de color al pasar el ratón */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Media query para hacer los botones más pequeños en pantallas pequeñas */
+@media (max-width: 600px) {
+  .listaBonos-boton,
+  .entregados-boton {
+    padding: 15px;
+    font-size: 6vw; /* Ajustado para pantallas más pequeñas */
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+h1 {
+  text-align: center;
 }

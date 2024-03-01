@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Routes,Route,Link} from 'react-router-dom';
-import AñadirEntrega from './AñadirEntrega'; // Importa AñadirEntrega sin el directorio 'pages'
 import '../Entrega.css'
 
 
-const ListaBonos = ({ apiData }) => {
+const EntregaDeBonos = ({ apiData }) => {
 
     const [bonos, setBonos] = useState([]);
     const [filtroOdontologo, setFiltroOdontologo] = useState('');
@@ -108,4 +107,4 @@ const ListaBonos = ({ apiData }) => {
     );
 }
 
-export default ListaBonos;
+export default EntregaDeBonos;

@@ -17,6 +17,18 @@ const ListaBonos = ({ apiData }) => {
             .catch((error) => { console.error(error); })
     }, [apiData]);
 
+    const borrar = (id) => {
+        axios.delete(`https://localhost:5002/Agremiacion/Entrega/${id}`)
+            .then((response) => {
+                // Actualizar la lista de bonos después de borrar uno
+                setBonos(bonos.filter(bono => bono.id !== id));
+                console.log("Borrado exitoso");
+            })
+            .catch((error) => {
+                console.error("Error al borrar:", error);
+            });
+    };
+
     const handleFiltroOdontologoChange = (event) => {
         setFiltroOdontologo(event.target.value);
     };
@@ -83,7 +95,7 @@ const ListaBonos = ({ apiData }) => {
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
                             <button><Link to="/EditarEntrega">Editar</Link></button>
-                            <button>Borrar</button>
+                            <button onClick={() => borrar(bono.id)}>Borrar</button>
                         </tr>
                     ))}
                 </tbody>

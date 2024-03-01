@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<Inicio/>}/>
           <Route path="Bonos" element={<Bonos/>}/>
           <Route path="EntregaDeBonos" element={<EntregaDeBonos apiData={apiData}/>}/>
-          <Route path="AñadirEntrega" element={<AñadirEntrega/>}/>
+          <Route path="AñadirEntrega" element={<AñadirEntrega apiData={apiData}/>}/>
           <Route path="EditarEntrega" element={<EditarEntrega/>}/>
           <Route path="AltaOdontologo" element={<AltaOdontologo/>} />
           <Route path="/" element={<Volver />} />

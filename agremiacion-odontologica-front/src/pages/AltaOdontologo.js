@@ -8,6 +8,7 @@ const handleSubmit = () => {
 const AltaOdontologo = () =>{
     return(
         <div className="container">
+        <div className="lista">
             <h1>Alta odontólogo</h1>
             <h4>Datos Personales</h4>
         <div className="row">
@@ -81,6 +82,7 @@ const AltaOdontologo = () =>{
             <div className="button-container">
                 <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
                 <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
+            </div>
             </div>
         </div>
     );

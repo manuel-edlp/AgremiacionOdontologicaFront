@@ -3,6 +3,14 @@
   margin: 0 auto;
   padding: 20px;
 }
+.lista {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
 
 .row {
   display: flex;
@@ -28,8 +36,15 @@
   margin-bottom: 5px;
 }
 #guardar{
-  max-width: 10%;
-  max-height: 1%;
+  bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: 20px; /* Ajusta la distancia desde la derecha */
+    background-color: #9933ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin:5%;
 }
 .button-row {
   display: flex;

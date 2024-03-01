@@ -40,7 +40,10 @@ const AñadirEntrega = () => {
                     value={odontologo}
                     onChange={handleBuscarOdontologo}
                 />
+                
+                <Link to="/CrearOdontologo">
                 <button onClick={handleCrearOdontologoNuevo}>Crear Nuevo Odontólogo</button>
+                </Link>
             </div>
             <div>
                 <input

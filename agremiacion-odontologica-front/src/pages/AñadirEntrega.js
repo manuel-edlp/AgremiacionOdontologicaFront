@@ -179,10 +179,11 @@ const AñadirEntrega = () => {
                     />
                 </div>
             </div>
-
+            <div className='botones-flex'>              
             <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
             <br></br>
-            <button onClick={handleSubmit}>Entregar Bono</button>
+            <button id="guardar"onClick={handleSubmit}>Entregar Bono</button>
+            </div>     
         </div>
     </div>
     );

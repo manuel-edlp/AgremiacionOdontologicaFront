@@ -26,9 +26,14 @@ const ListaBonos = ({ apiData }) => {
     };
 
     const bonosFiltrados = bonos.filter((bono) => {
-        return (bono?.odontologo?.toLowerCase()  || '').includes(filtroOdontologo.toLowerCase()) &&
-               (bono?.obraSocial?.toLowerCase()  || '').includes(filtroObraSocial.toLowerCase());
+        const odontologoCompleto = `${bono?.odontologoNombre} ${bono?.odontologoApellido}`.toLowerCase();
+        const filtroOdontologoLowerCase = filtroOdontologo.toLowerCase();
+        const filtroObraSocialLowerCase = filtroObraSocial.toLowerCase();
+    
+        return odontologoCompleto.includes(filtroOdontologoLowerCase) &&
+               bono?.obraSocial?.toLowerCase().includes(filtroObraSocialLowerCase);
     });
+    
 
     return (
         <div className="lista">

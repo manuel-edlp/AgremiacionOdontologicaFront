@@ -1,7 +1,7 @@
 import React, { Link, useState } from 'react';
 import '../App.css'; // Importa el archivo CSS para los estilos
 
-const AñadirEntrega = () => {
+const EditarEntrega = () => {
     const [odontologo, setOdontologo] = useState('');
     const [obraSocial, setObraSocial] = useState('');
     const [numeroInicio, setNumeroInicio] = useState('');
@@ -31,7 +31,7 @@ const AñadirEntrega = () => {
 
     return (
         <div>
-        <h1>Entrega Bono</h1>
+        <h1>Editar Entrega Bono</h1>
         <div id="altaEntrega">
             <div>
                 
@@ -52,12 +52,12 @@ const AñadirEntrega = () => {
             <div>
                 <div id='obrasocial'>
                 <h4>Obra Social</h4>
-                <select>
-                    <option value={obraSocial} onChange={handleBuscarObraSocial}></option>
-                    <option value={obraSocial} onChange={handleBuscarObraSocial}></option>
-                    <option value={obraSocial} onChange={handleBuscarObraSocial}></option>
-                </select>
-
+                <input
+                    type="text"
+                    placeholder="Buscar obra social"
+                    value={obraSocial}
+                    onChange={handleBuscarObraSocial}
+                />
                 </div>
                 <button onClick={handleCrearObraSocialNueva}>+</button>
             </div>
@@ -83,10 +83,10 @@ const AñadirEntrega = () => {
             </div>
 
             <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
-            <button onClick={handleSubmit}>Entregar Bono</button>
+            <button onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
         </div>
     </div>
     );
 }
 
-export default AñadirEntrega;
+export default EditarEntrega;

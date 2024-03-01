@@ -1,6 +1,5 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../App.css'
-// Outlet es donde se renderizara cada componente
 
 const Inicio = () =>{
     return (<div>

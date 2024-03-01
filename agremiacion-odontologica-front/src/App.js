@@ -4,6 +4,8 @@ import Layout from "./pages/Layout";
 import Bonos from './pages/Bonos';
 import EntregaDeBonos from './pages/EntregaDeBonos';
 import AñadirEntrega from './pages/AñadirEntrega';
+import EditarEntrega from './pages/EditarEntrega';
+import AltaOdontologo from './pages/AltaOdontologo';
 import Inicio from './pages/Inicio';
 import Volver from './pages/Volver';
 import React, { useEffect, useState, useRef } from 'react';
@@ -26,7 +28,9 @@ function App() {
           <Route path="Bonos" element={<Bonos/>}/>
           <Route path="EntregaDeBonos" element={<EntregaDeBonos apiData={apiData}/>}/>
           <Route path="AñadirEntrega" element={<AñadirEntrega/>}/>
-          <Route path='/' element={<Volver />} />
+          <Route path="EditarEntrega" element={<EditarEntrega/>}/>
+          <Route path="AltaOdontologo" element={<AltaOdontologo/>} />
+          <Route path="/" element={<Volver />} />
         </Route>
       </Routes>
     </div>

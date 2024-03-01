@@ -77,7 +77,7 @@ const ListaBonos = ({ apiData }) => {
                             <td>{bono.obraSocial}</td>
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
-                            <button>Editar</button>
+                            <button><Link to="/EditarEntrega">Editar</Link></button>
                             <button>Borrar</button>
                         </tr>
                     ))}
@@ -85,6 +85,7 @@ const ListaBonos = ({ apiData }) => {
             </table>
 
             <button id="volver"><Link id='link' to="/">VOLVER</Link></button>
+            
 
         </div>
     );

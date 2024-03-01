@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import '../App.css'; // Importa el archivo CSS para los estilos
 import axios from 'axios'; // Para realizar la solicitud PUT
 
-const EditarEntrega = ({ id }) => {
+const EditarEntrega = ({id}) => {
+  
   const [odontologoSeleccionado, setOdontologoSeleccionado] = useState('');
   const [obraSocialSeleccionada, setObraSocialSeleccionada] = useState('');
   const [numeroInicio, setNumeroInicio] = useState('');
@@ -39,10 +40,9 @@ const EditarEntrega = ({ id }) => {
       numeroFinal,
     };
 
-    await axios.put(`https://localhost:5002/Agremiacion/Entrega/${idEntrega}`, data);
+    await axios.put(`https://localhost:5002/Agremiacion/Entrega/${id}`, data);
 
-    // Redirigir a la página de Listado de Entregas
-    window.location.href = '/EntregaDeBonos';
+
   };
 
   return (
@@ -60,9 +60,6 @@ const EditarEntrega = ({ id }) => {
               ))}
             </select>
           </div>
-          <Link to="/AltaOdontologo">
-            <button>+</button>
-          </Link>
         </div>
 
         <div>

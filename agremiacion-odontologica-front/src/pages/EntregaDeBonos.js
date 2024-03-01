@@ -32,6 +32,8 @@ const EntregaDeBonos = ({ apiData }) => {
         setFiltroOdontologo(event.target.value);
     };
 
+   
+
     const handleFiltroObraSocialChange = (event) => {
         setFiltroObraSocial(event.target.value);
     };
@@ -93,7 +95,9 @@ const EntregaDeBonos = ({ apiData }) => {
                             <td>{bono.obraSocial}</td>
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
-                            <button><Link to="/EditarEntrega">Editar</Link></button>
+                            <Link to="/EditarEntrega" id={bono.id}>
+                             <button>Editar</button>
+                            </Link>
                             <button onClick={() => borrar(bono.id)}>Borrar</button>
                         </tr>
                     ))}

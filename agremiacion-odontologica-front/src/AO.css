@@ -31,10 +31,10 @@ body {
     margin-bottom: 10px;
   }
   
-  .container input[type="text"],
-  .container input[type="number"],
-  .container select {
-    flex-basis: calc(50% - 10px);
+    #ao,
+    input[type="number"],
+    select {
+    width: calc(20% - 20px);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -43,8 +43,6 @@ body {
   }
   
   .container select {
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23444444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position: right 8px top 50%;
     background-size: 24px;

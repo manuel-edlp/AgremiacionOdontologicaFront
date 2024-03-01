@@ -13,22 +13,22 @@ const AltaOdontologo = () =>{
 
             <div>
                 <h4>Nombre</h4>
-                <input type="text"/>
+                <input id='ao' type="text"/>
             </div>
 
             <div>
                 <h4>DNI</h4>
-                <input type="text"/>
+                <input id='ao' type="text"/>
             </div>
 
             <div>
                 <h4>Apellido</h4>
-                <input type="text"/>
+                <input id='ao' type="text"/>
             </div>
 
             <div>
                 <h4>Matrícula</h4>
-                <input type="text"/>
+                <input id='ao'type="text"/>
             </div>
 
             <div>
@@ -60,17 +60,17 @@ const AltaOdontologo = () =>{
 
             <div>
                 <h4>Calle</h4>
-                <input type="text"/>
+                <input id='ao'type="text"/>
             </div>
 
             <div>
                 <h4>Cod. Postal</h4>
-                <input type="text"/>
+                <input id='ao' type="text"/>
             </div>
 
             <div>
                 <h4>Número</h4>
-                <input type="text"/>
+                <input id='ao' type="text"/>
             </div>
 
             <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>

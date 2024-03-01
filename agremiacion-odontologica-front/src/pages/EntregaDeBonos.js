@@ -95,7 +95,7 @@ const EntregaDeBonos = ({ apiData }) => {
                             <td>{bono.obraSocial}</td>
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
-                            <td>
+                            <td id="acciones">
                                 <Link to="/EditarEntrega" id={bono.id}>
                                 <button >Editar</button>
                                 </Link>

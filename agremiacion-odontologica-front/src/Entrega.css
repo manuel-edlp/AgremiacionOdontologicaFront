@@ -14,6 +14,11 @@
     margin-bottom: 10px;
     text-align: center;
   }
+
+  #acciones{
+   padding-right: 5.5%;
+   padding-bottom: 3% ;
+  }
   
   /* Contenedor de búsqueda */
   .lista input[type="text"] {

@@ -80,7 +80,7 @@ const AñadirEntrega = () => {
             inicio,
             final
         };
-    
+
         try {
             // Enviar los datos de entrega al servidor
             const respuesta = axios.post('https://localhost:5002/Agremiacion/Entrega/AltaEntrega/', datosEntrega);

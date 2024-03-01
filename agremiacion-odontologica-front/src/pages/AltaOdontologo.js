@@ -78,7 +78,7 @@ const AltaOdontologo = () =>{
                 <h4>Número</h4>
                 <input id='ao' type="text"/>
             </div>
-            <div className="row">
+            <div className="button-container">
                 <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
                 <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
             </div>

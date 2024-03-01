@@ -1,92 +1,110 @@
-import React, { Link, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css'; // Importa el archivo CSS para los estilos
+import axios from 'axios'; // Para realizar la solicitud PUT
 
-const EditarEntrega = () => {
-    const [odontologo, setOdontologo] = useState('');
-    const [obraSocial, setObraSocial] = useState('');
-    const [numeroInicio, setNumeroInicio] = useState('');
-    const [numeroFinal, setNumeroFinal] = useState('');
+const EditarEntrega = ({ id }) => {
+  const [odontologoSeleccionado, setOdontologoSeleccionado] = useState('');
+  const [obraSocialSeleccionada, setObraSocialSeleccionada] = useState('');
+  const [numeroInicio, setNumeroInicio] = useState('');
+  const [numeroFinal, setNumeroFinal] = useState('');
+  const [odontologos, setOdontologos] = useState([]);
+  const [obrasSociales, setObrasSociales] = useState([]);
+  const [idEntrega, setIdEntrega] = useState(null);
 
-    const handleBuscarOdontologo = (e) => {
-        setOdontologo(e.target.value);
-        // Aquí puedes agregar la lógica de búsqueda en respuesta a los cambios en el campo de búsqueda de odontólogo
+  useEffect(() => {
+    const fetchOdontologos = async () => {
+      const response = await axios.get('https://localhost:5002/Agremiacion/Odontologo/ListarOdontologos');
+      setOdontologos(response.data);
     };
 
-    const handleBuscarObraSocial = (e) => {
-        setObraSocial(e.target.value);
-        // Aquí puedes agregar la lógica de búsqueda en respuesta a los cambios en el campo de búsqueda de obra social
+    const fetchObrasSociales = async () => {
+      const response = await axios.get('https://localhost:5002/Agremiacion/ObraSocial/ListarObrasSociales');
+      setObrasSociales(response.data);
     };
 
-    const handleCrearOdontologoNuevo = () => {
-        // Lógica para crear un nuevo odontólogo
+    fetchOdontologos();
+    fetchObrasSociales();
+  }, []);
+
+  useEffect(() => {
+    setIdEntrega(id);
+  }, [id]);
+
+  const handleSubmit = async () => {
+    const data = {
+      odontologo: odontologoSeleccionado,
+      obraSocial: obraSocialSeleccionada,
+      numeroInicio,
+      numeroFinal,
     };
 
-    const handleCrearObraSocialNueva = () => {
-        // Lógica para crear una nueva obra social
-    };
+    await axios.put(`https://localhost:5002/Agremiacion/Entrega/${idEntrega}`, data);
 
-    const handleSubmit = () => {
-        // Lógica para manejar la presentación de los datos ingresados
-    };
+    // Redirigir a la página de Listado de Entregas
+    window.location.href = '/EntregaDeBonos';
+  };
 
-    return (
+  return (
+    <div>
+      <h1>Editar Entrega Bono</h1>
+      <div id="altaEntrega">
         <div>
-        <h1>Editar Entrega Bono</h1>
-        <div id="altaEntrega">
-            <div>
-                
-                <div id='odontologo'>
-                <h4>Odontólogo</h4>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={odontologo}
-                    onChange={handleBuscarOdontologo}
-                />
-                </div>
-                <Link to="/AltaOdontologo">
-                <button onClick={handleCrearOdontologoNuevo}>+</button>
-                </Link>
-            </div>
-
-            <div>
-                <div id='obrasocial'>
-                <h4>Obra Social</h4>
-                <input
-                    type="text"
-                    placeholder="Buscar obra social"
-                    value={obraSocial}
-                    onChange={handleBuscarObraSocial}
-                />
-                </div>
-                <button onClick={handleCrearObraSocialNueva}>+</button>
-            </div>
-            <div>
-                <div id='desde'>
-                    <h4>Desde</h4>
-                    <input
-                        type="number"
-                        placeholder="Número de Inicio..."
-                        value={numeroInicio}
-                        onChange={(e) => setNumeroInicio(e.target.value)}
-                    />
-                </div>
-                <div id='hasta'>
-                    <h4>Hasta</h4>
-                    <input
-                        type="number"
-                        placeholder="Número de Final..."
-                        value={numeroFinal}
-                        onChange={(e) => setNumeroFinal(e.target.value)}
-                    />
-                </div>
-            </div>
-
-            <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
-            <button onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
+          <div id='odontologo'>
+            <h4>Odontólogo</h4>
+            <select value={odontologoSeleccionado} onChange={(e) => setOdontologoSeleccionado(e.target.value)}>
+              {odontologos.map((odontologo) => (
+                <option key={odontologo.id} value={odontologo.id}>
+                  {odontologo.nombre} {odontologo.apellido}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Link to="/AltaOdontologo">
+            <button>+</button>
+          </Link>
         </div>
+
+        <div>
+          <div id='obrasocial'>
+            <h4>Obra Social</h4>
+            <select value={obraSocialSeleccionada} onChange={(e) => setObraSocialSeleccionada(e.target.value)}>
+              {obrasSociales.map((obraSocial) => (
+                <option key={obraSocial.id} value={obraSocial.id}>
+                  {obraSocial.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+    
+        </div>
+
+        <div>
+          <div id='desde'>
+            <h4>Desde</h4>
+            <input
+              type="number"
+              placeholder="Número de Inicio..."
+              value={numeroInicio}
+              onChange={(e) => setNumeroInicio(e.target.value)}
+            />
+          </div>
+          <div id='hasta'>
+            <h4>Hasta</h4>
+            <input
+              type="number"
+              placeholder="Número de Final..."
+              value={numeroFinal}
+              onChange={(e) => setNumeroFinal(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
+        <button onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
+      </div>
     </div>
-    );
-}
+  );
+};
 
 export default EditarEntrega;

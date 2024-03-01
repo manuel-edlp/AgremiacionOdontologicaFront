@@ -100,7 +100,7 @@ const EntregaDeBonos = ({ apiData }) => {
                 </tbody>
             </table>
 
-            <button id="volver"><Link id='link' to="/">VOLVER</Link></button>
+            <button id="volver"><Link id='link' to="/">Volver</Link></button>
             
 
         </div>

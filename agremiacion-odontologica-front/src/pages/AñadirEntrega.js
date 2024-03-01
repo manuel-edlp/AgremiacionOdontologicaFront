@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Importa el archivo CSS para los estilos
+import '../AE.css'; // Importa el archivo CSS para los estilos
 
 const AñadirEntrega = () => {
     const [odontologo, setOdontologo] = useState('');
@@ -67,16 +67,14 @@ const AñadirEntrega = () => {
                     <h4>Desde</h4>
                     <input
                         type="number"
-                        placeholder="Número de Inicio..."
                         value={numeroInicio}
                         onChange={(e) => setNumeroInicio(e.target.value)}
                     />
                 </div>
-                <div id='hasta'>
-                    <h4>Hasta</h4>
+                <div>
+                    <h4 id='hasta'>Hasta</h4>
                     <input
                         type="number"
-                        placeholder="Número de Final..."
                         value={numeroFinal}
                         onChange={(e) => setNumeroFinal(e.target.value)}
                     />
@@ -84,6 +82,7 @@ const AñadirEntrega = () => {
             </div>
 
             <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
+            <br></br>
             <button onClick={handleSubmit}>Entregar Bono</button>
         </div>
     </div>

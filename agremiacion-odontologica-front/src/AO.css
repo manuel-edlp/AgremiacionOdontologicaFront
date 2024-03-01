@@ -1,0 +1,78 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilos para el contenedor principal */
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  /* Estilos para los elementos de la alta del odontólogo */
+  .container h1 {
+    margin-top: 0;
+  }
+  
+  .container h4 {
+    margin-bottom: 5px;
+  }
+  
+  .container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .container input[type="text"],
+  .container input[type="number"],
+  .container select {
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .container select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23444444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 24px;
+  }
+  
+  .container button {
+    background-color: #9933ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .container button:hover {
+    background-color: #6a00d5;
+  }
+  
+  #volver {
+    background-color: #f44336;
+  }
+  
+  #volver:hover {
+    background-color: #d32f2f;
+  }
+  
+  #link {
+    text-decoration: none;
+    color: white;
+  }
+  

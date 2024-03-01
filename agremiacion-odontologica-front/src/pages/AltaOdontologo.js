@@ -1,4 +1,5 @@
-import React, { Link } from 'react';
+import { Link } from 'react-router-dom';
+import '../AO.css'
 
 const handleSubmit = () => {
     // Lógica para manejar la presentación de los datos ingresados

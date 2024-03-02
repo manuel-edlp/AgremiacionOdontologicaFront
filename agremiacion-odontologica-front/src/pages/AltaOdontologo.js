@@ -22,13 +22,6 @@ const AltaOdontologo = () => {
 
 
     const handleSubmit = async () => {
-        const datosDomicilio = {
-            calle,
-            numero,
-            localidad,
-            odontologo: `${nombre} ${apellido}` // Suponiendo que el nombre y el apellido se combinan para formar el nombre completo del odontólogo
-        };
-    
         const datosOdontologo = {
             nombre,
             apellido,
@@ -38,15 +31,23 @@ const AltaOdontologo = () => {
         };
     
         try {
-            // Enviar datos del domicilio al servidor
-            const responseDomicilio = await axios.post('https://localhost:5002/Agremiacion/Domicilio/AltaDomicilio', datosDomicilio);
+            // Enviar datos del odontólogo al servidor
+            const responseOdontologo = await axios.post('https://localhost:5002/Agremiacion/Odontologo/AltaOdontologo', datosOdontologo);
     
-            if (responseDomicilio.status === 201) {
-                // Si el alta del domicilio fue exitoso, procedemos con el alta del odontólogo
-                // El id del domicilio se puede obtener de la respuesta del servidor si es necesario
-                const responseOdontologo = await axios.post('https://localhost:5002/Agremiacion/Odontologo/AltaOdontologo', datosOdontologo);
+            if (responseOdontologo.status === 201) {
+                // Si el alta del odontólogo fue exitoso, procedemos con el alta del domicilio
+                // El id del odontólogo se puede obtener de la respuesta del servidor si es necesario
+                const datosDomicilio = {
+                    calle,
+                    numero: parseInt(numero), // Convertimos "numero" a un entero
+                    localidad,
+                    odontologoNombre:`${datosOdontologo.nombre}`,
+                    odontologoApellido:`${datosOdontologo.apellido}`
+                };
     
-                if (responseOdontologo.status === 201) {
+                const responseDomicilio = await axios.post('https://localhost:5002/Agremiacion/Domicilio/AltaDomicilio', datosDomicilio);
+    
+                if (responseDomicilio.status === 201) {
                     // Lógica para manejar una respuesta exitosa
                     console.log('Odontólogo y domicilio agregados exitosamente');
                 }
@@ -56,6 +57,7 @@ const AltaOdontologo = () => {
             console.error('Error al agregar odontólogo y domicilio:', error);
         }
     };
+    
 
 
 
@@ -159,8 +161,8 @@ const AltaOdontologo = () => {
                     </div>
                 </div>
                 <div className="button-container">
-                    <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
-                    <button id="guardar" onClick={handleSubmit}>Guardar</button>
+                    <button id="volver"><Link id='link' to="/AñadirEntrega">Cancelar</Link></button>
+                    <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
                 </div>
             </div>
         </div>

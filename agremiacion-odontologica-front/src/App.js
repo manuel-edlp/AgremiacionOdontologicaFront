@@ -6,6 +6,7 @@ import EntregaDeBonos from './pages/EntregaDeBonos';
 import AñadirEntrega from './pages/AñadirEntrega';
 import EditarEntrega from './pages/EditarEntrega';
 import AltaOdontologo from './pages/AltaOdontologo';
+import AltaObraSocial from './pages/AltaObraSocial';
 import Inicio from './pages/Inicio';
 import Volver from './pages/Volver';
 import React, { useEffect, useState, useRef } from 'react';
@@ -30,6 +31,7 @@ function App() {
           <Route path="AñadirEntrega" element={<AñadirEntrega apiData={apiData}/>}/>
           <Route path="EditarEntrega" element={<EditarEntrega/>}/>
           <Route path="AltaOdontologo" element={<AltaOdontologo/>} />
+          <Route path="AltaObraSocial" element={<AltaObraSocial/>} />
           <Route path="/" element={<Volver />} />
         </Route>
       </Routes>

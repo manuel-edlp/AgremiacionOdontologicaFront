@@ -48,3 +48,5 @@ return (
     </div>
 );
 };
+
+export default AltaObraSocial

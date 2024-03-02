@@ -160,7 +160,9 @@ const AñadirEntrega = () => {
                                 </option>
                             ))}
                         </select>
-                        <button id="boton2" onClick={handleCrearObraSocialNueva}>+</button>
+                        <Link to="/AltaObraSocial">
+                            <button className="boton" onClick={handleCrearObraSocialNueva}>+</button>
+                        </Link>
                     </div>
                 </div>
 

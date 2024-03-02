@@ -7,7 +7,21 @@
     border-radius: 10px;
     background-color: #f9f9f9;
   }
-  
+  #centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espacio entre los elementos */
+}
+#añadirentrega {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+#centrar > div {
+    flex: 1; /* Para que los campos de búsqueda ocupen el mismo ancho */
+}
   /* Estilos para los títulos */
   #lista-titulo {
     color: #333;
@@ -108,14 +122,14 @@
     text-decoration: none; /* Elimina el subrayado del enlace */
   }
 
-  #odontologo, #obrasocial, #añadirentrega {
+  #odontologo, #obrasocial  {
     display: inline-block;
     text-align: center;
   }
   
   /* Media query para ajustar el ancho en pantallas más pequeñas */
   @media (min-width: 600px) {
-    #odontologo, #obrasocial, #añadirentrega {
+    #odontologo, #obrasocial{
       width: calc(33% - 1px); /* Calcula el ancho para que estén uno al lado del otro */
     }
   }

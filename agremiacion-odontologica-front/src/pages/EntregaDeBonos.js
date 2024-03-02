@@ -51,7 +51,7 @@ const EntregaDeBonos = ({ apiData }) => {
     return (
         <div className="lista">
             <h2 id="lista-titulo">Entrega de Bonos</h2>
-            <div>
+            <div id="centrar">
 
                 <div id='odontologo'>
                 <h4>Odontólogo</h4>
@@ -74,7 +74,7 @@ const EntregaDeBonos = ({ apiData }) => {
                 </div>
 
                 <Link id='añadirentrega' to="/AñadirEntrega">
-                    <button>Añadir entrega</button>
+                    <button id="botoncito">Añadir entrega</button>
                 </Link>
             </div>
             <br></br>

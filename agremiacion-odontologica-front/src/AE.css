@@ -201,9 +201,12 @@ color: #ffffff; /* Cambia el color del texto del enlace a negro */
 text-decoration: none; /* Elimina el subrayado del enlace */
 }
 
-#obrasocial, #añadirentrega {
+#obrasocial{
 display: inline-block;
 text-align: center;
+}
+#botoncito{
+  margin-top: 17.5%;
 }
 
 #alinear{

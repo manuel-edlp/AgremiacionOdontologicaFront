@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link,useLocation  } from 'react-router-dom';
-import '../App.css'; // Importa el archivo CSS para los estilos
+import '../AE.css'; // Importa el archivo CSS para los estilos
 import axios from 'axios'; // Para realizar la solicitud PUT
 
 const EditarEntrega = () => {

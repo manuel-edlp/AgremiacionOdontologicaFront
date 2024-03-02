@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../AE.css'; // Importa el archivo CSS para los estilos
 import axios from 'axios';
@@ -12,18 +12,24 @@ const AñadirEntrega = () => {
     const [obraSocialOptions, setObraSocialOptions] = useState([]);
     const [selectedObraSocial, setSelectedObraSocial] = useState('');
     const [mensaje, setMensaje] = useState('');
-    const [entrega, setEntrega] = useState({
-        odontologo: '',
-        obraSocial: '',
-        numeroInicio: '',
-        numeroFinal: ''
-    });
     const [showOdontologosList, setShowOdontologosList] = useState(false);
 
+    const odontologosListRef = useRef(null); // Referencia al elemento de la lista desplegable de odontólogos
 
     useEffect(() => {
         listarObrasSociales();
+        document.addEventListener('click', handleClickOutside); // Agrega el event listener para cerrar la lista al hacer clic fuera de ella
+        return () => {
+            document.removeEventListener('click', handleClickOutside); // Limpia el event listener cuando el componente se desmonta
+        };
     }, []);
+
+    const handleClickOutside = (event) => {
+        console.log("Clicked outside");
+        if (odontologosListRef.current && !odontologosListRef.current.contains(event.target)) {
+            setShowOdontologosList(false);
+        }
+    };
 
     const listarObrasSociales = () => {
         axios.get('https://localhost:5002/Agremiacion/ObraSocial/ListarObrasSociales')
@@ -34,14 +40,13 @@ const AñadirEntrega = () => {
                     setTimeout(() => {
                       setMensaje('');
                     }, 3000); // Borra el mensaje después de 3 segundos
-                  }
+                }
             })
             .catch((error) => {
                 setMensaje('Error al agregar.');
                 setTimeout(() => {
                   setMensaje('');
                 }, 3000); // Borra el mensaje después de 3 segundos
-              
             });
     };
 
@@ -49,6 +54,7 @@ const AñadirEntrega = () => {
         axios.get(`https://localhost:5002/Agremiacion/Odontologo/listar/${busqueda}`)
             .then((response) => {
                 setOdontologos(response.data);
+                setShowOdontologosList(true); // Mostrar la lista de odontólogos al obtener resultados
             })
             .catch((error) => {
                 console.error(error);
@@ -64,7 +70,8 @@ const AñadirEntrega = () => {
             buscarOdontologos(busqueda);
         }
     };
-     const handleSelectObraSocialChange = (event) => {
+
+    const handleSelectObraSocialChange = (event) => {
         setSelectedObraSocial(event.target.value);
     };
 
@@ -105,7 +112,6 @@ const AñadirEntrega = () => {
         setOdontologo(nombreCompleto);
         setShowOdontologosList(false);
     };
-    
 
     const handleCrearOdontologoNuevo = () => {
         // Lógica para crear un nuevo odontólogo
@@ -115,77 +121,76 @@ const AñadirEntrega = () => {
         // Lógica para crear una nueva obra social
     };
 
-
-
     return (
         <div>
-        <h1>Entrega Bono</h1>
-        <div id="altaEntrega">
-            <div>
-                
-            <div id='odontologo' onClick={() => setShowOdontologosList(true)}>
-                <h4>Odontólogo</h4>
-                <input
-                    type="text"
-                    placeholder="Buscar odontólogo..."
-                    value={odontologo}
-                    onChange={handleBuscarOdontologo}
-                />
-                {showOdontologosList && (
-                    <ul>
-                        {odontologos.map((odontologo) => (
-                            <li key={odontologo.id} onClick={() => handleSelectOdontologo(odontologo)}>
-                                {odontologo.nombre} {odontologo.apellido}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-                <Link to="/AltaOdontologo">
-                <button onClick={handleCrearOdontologoNuevo}>+</button>
-                </Link>
-            </div>
-
-            <div>
-                <div id='obrasocial'>
-                <h4>Obra Social</h4>
-                <select value={selectedObraSocial} onChange={handleSelectObraSocialChange}>
-                    <option value="">Seleccione una obra social</option>
-                        {obraSocialOptions.map((obraSocial) => (
-                    <option key={obraSocial.id} value={obraSocial.value}>
-                            {obraSocial.nombre}
-                    </option>
-    ))}
-</select>
-
+            <h1>Entrega Bono</h1>
+            <div id="altaEntrega">
+                <div id="flex">
+                    <div id='odontologo' onClick={() => setShowOdontologosList(true)}>
+                        <h4>Odontólogo</h4>
+                        <div id="alinear">
+                        <input
+                            type="text"
+                            placeholder="Buscar odontólogo..."
+                            value={odontologo}
+                            onChange={handleBuscarOdontologo}
+                        />
+                        {showOdontologosList && (
+                            <ul ref={odontologosListRef}>
+                                {odontologos.map((odontologo) => (
+                                    <li key={odontologo.id} onClick={() => handleSelectOdontologo(odontologo)}>
+                                        {odontologo.nombre} {odontologo.apellido}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        <Link to="/AltaOdontologo">
+                        <button onClick={handleCrearOdontologoNuevo}>+</button>
+                    </Link>
+                    </div>
+                    </div>
+                    
                 </div>
-                <button onClick={handleCrearObraSocialNueva}>+</button>
-            </div>
-            <div>
-                <div id='desde'>
-                    <h4>Desde</h4>
-                    <input
-                        type="number"
-                        value={inicio}
-                        onChange={(e) => setNumeroInicio(e.target.value)}
-                    />
+
+                <div>
+                    <div id='obrasocial'>
+                        <h4>Obra Social</h4>
+                        <select value={selectedObraSocial} onChange={handleSelectObraSocialChange}>
+                            <option value="">Seleccione una obra social</option>
+                            {obraSocialOptions.map((obraSocial) => (
+                                <option key={obraSocial.id} value={obraSocial.value}>
+                                    {obraSocial.nombre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button onClick={handleCrearObraSocialNueva}>+</button>
                 </div>
                 <div>
-                    <h4 id='hasta'>Hasta</h4>
-                    <input
-                        type="number"
-                        value={final}
-                        onChange={(e) => setNumeroFinal(e.target.value)}
-                    />
+                    <div id='desde'>
+                        <h4>Desde</h4>
+                        <input
+                            type="number"
+                            value={inicio}
+                            onChange={(e) => setNumeroInicio(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <h4 id='hasta'>Hasta</h4>
+                        <input
+                            type="number"
+                            value={final}
+                            onChange={(e) => setNumeroFinal(e.target.value)}
+                        />
+                    </div>
                 </div>
+                <div className='botones-flex'>              
+                    <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
+                    <br></br>
+                    <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Entregar Bono</Link></button>
+                </div>     
             </div>
-            <div className='botones-flex'>              
-            <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
-            <br></br>
-            <button id="guardar"onClick={handleSubmit}>Entregar Bono</button>
-            </div>     
         </div>
-    </div>
     );
 }
 

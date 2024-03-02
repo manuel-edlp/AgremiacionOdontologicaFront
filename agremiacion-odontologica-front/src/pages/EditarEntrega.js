@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation  } from 'react-router-dom';
 import '../App.css'; // Importa el archivo CSS para los estilos
 import axios from 'axios'; // Para realizar la solicitud PUT
 
-const EditarEntrega = ({id}) => {
-  
+const EditarEntrega = () => {
+
+  const location = useLocation();
+  const {id} = location.state;
+  console.log(id);
   const [odontologoSeleccionado, setOdontologoSeleccionado] = useState('');
   const [obraSocialSeleccionada, setObraSocialSeleccionada] = useState('');
   const [numeroInicio, setNumeroInicio] = useState('');
@@ -36,8 +39,8 @@ const EditarEntrega = ({id}) => {
     const data = {
       odontologo: odontologoSeleccionado,
       obraSocial: obraSocialSeleccionada,
-      numeroInicio,
-      numeroFinal,
+      numeroInicio: numeroInicio,
+      numeroFinal: numeroFinal,
     };
 
     await axios.put(`https://localhost:5002/Agremiacion/Entrega/${id}`, data);
@@ -45,6 +48,8 @@ const EditarEntrega = ({id}) => {
 
   };
 
+  const entrega = axios.get(`https://localhost:5002/Agremiacion/Entrega/getEntregaById/${id}`);
+  console.log(entrega);
   return (
     <div>
       <h1>Editar Entrega Bono</h1>

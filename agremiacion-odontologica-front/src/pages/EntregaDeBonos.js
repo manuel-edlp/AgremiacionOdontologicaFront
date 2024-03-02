@@ -96,10 +96,10 @@ const EntregaDeBonos = ({ apiData }) => {
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
                             <td id="acciones">
-                                <Link to="/EditarEntrega" id={bono.id}>
-                                <button >Editar</button>
-                                </Link>
-                                <button onClick={() => borrar(bono.id)}>Borrar</button>
+                            <Link to="/EditarEntrega" state={{id:bono.id}}>
+                                <button>Editar</button>
+                            </Link>
+                            <button onClick={() => borrar(bono.id)}>Borrar</button>  {/* Button to call a function 'borrar' with bono ID */}
                             </td>
              
            

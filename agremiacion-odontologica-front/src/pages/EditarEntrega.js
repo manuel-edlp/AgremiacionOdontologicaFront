@@ -5,6 +5,9 @@ import axios from 'axios'; // Para realizar la solicitud PUT
 
 const EditarEntrega = () => {
 
+  
+
+
   const location = useLocation();
   const {id} = location.state;
 
@@ -15,6 +18,8 @@ const EditarEntrega = () => {
   const [odontologos, setOdontologos] = useState([]);
   const [obrasSociales, setObrasSociales] = useState([]);
   const [idEntrega, setIdEntrega] = useState(null);
+
+
 
   useEffect(() => {
     const fetchOdontologos = async () => {
@@ -96,23 +101,25 @@ const EditarEntrega = () => {
     
         </div>
 
-        <div id="columna-2">
-                    <div id='desde'>
-                        <h4>Desde</h4>
-                        <input
-                            type="number"
-                            value={numeroInicio}
-                            onChange={(e) => setNumeroInicio(e.target.value)}
-                        />
-                    </div>
-                    <div id='hasta'>
-                        <h4>Hasta</h4>
-                        <input
-                            type="number"
-                            value={numeroFinal}
-                            onChange={(e) => setNumeroFinal(e.target.value)}
-                        />
-                    </div>
+        <div>
+          <div id='desde'>
+            <h4>Desde</h4>
+            <input
+              type="number"
+              placeholder="Número de Inicio..."
+              value={numeroInicio}
+              onChange={(e) => setNumeroInicio(e.target.value)}
+            />
+          </div>
+          <div id='hasta'>
+            <h4>Hasta</h4>
+            <input
+              type="number"
+              placeholder="Número de Final..."
+              value={numeroFinal}
+              onChange={(e) => setNumeroFinal(e.target.value)}
+            />
+          </div>
         </div>
 
         <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>

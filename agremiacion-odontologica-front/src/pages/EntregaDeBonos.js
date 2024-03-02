@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Routes,Route,Link} from 'react-router-dom';
-import '../Entrega.css'
+import { Routes, Route, Link } from 'react-router-dom';
+import '../Entrega.css';
 
 
 const EntregaDeBonos = ({ apiData }) => {
@@ -9,6 +9,8 @@ const EntregaDeBonos = ({ apiData }) => {
     const [bonos, setBonos] = useState([]);
     const [filtroOdontologo, setFiltroOdontologo] = useState('');
     const [filtroObraSocial, setFiltroObraSocial] = useState('');
+    const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false); // Estado para controlar la visibilidad del mensaje de confirmación
+    const [idBonoAEliminar, setIdBonoAEliminar] = useState(null); // Estado para almacenar el ID del bono a eliminar
 
     useEffect(() => {
         axios.get('https://localhost:5002/Agremiacion/Entrega/Listar')
@@ -17,22 +19,30 @@ const EntregaDeBonos = ({ apiData }) => {
     }, [apiData]);
 
     const borrar = (id) => {
-        axios.delete(`https://localhost:5002/Agremiacion/Entrega/${id}`)
+        setIdBonoAEliminar(id); // Almacenar el ID del bono a eliminar
+        setMostrarConfirmacion(true); // Mostrar el mensaje de confirmación
+    };
+
+    const confirmarBorrado = () => {
+        axios.delete(`https://localhost:5002/Agremiacion/Entrega/${idBonoAEliminar}`)
             .then((response) => {
                 // Actualizar la lista de bonos después de borrar uno
-                setBonos(bonos.filter(bono => bono.id !== id));
+                setBonos(bonos.filter(bono => bono.id !== idBonoAEliminar));
                 console.log("Borrado exitoso");
+                setMostrarConfirmacion(false); // Ocultar el mensaje de confirmación después de borrar
             })
             .catch((error) => {
                 console.error("Error al borrar:", error);
             });
     };
 
+    const cancelarBorrado = () => {
+        setMostrarConfirmacion(false); // Ocultar el mensaje de confirmación si se cancela el borrado
+    };
+
     const handleFiltroOdontologoChange = (event) => {
         setFiltroOdontologo(event.target.value);
     };
-
-   
 
     const handleFiltroObraSocialChange = (event) => {
         setFiltroObraSocial(event.target.value);
@@ -42,11 +52,10 @@ const EntregaDeBonos = ({ apiData }) => {
         const odontologoCompleto = `${bono?.odontologoNombre} ${bono?.odontologoApellido}`.toLowerCase();
         const filtroOdontologoLowerCase = filtroOdontologo.toLowerCase();
         const filtroObraSocialLowerCase = filtroObraSocial.toLowerCase();
-    
+
         return odontologoCompleto.includes(filtroOdontologoLowerCase) &&
                bono?.obraSocial?.toLowerCase().includes(filtroObraSocialLowerCase);
     });
-    
 
     return (
         <div className="lista">
@@ -54,23 +63,23 @@ const EntregaDeBonos = ({ apiData }) => {
             <div id="centrar">
 
                 <div id='odontologo'>
-                <h4>Odontólogo</h4>
-                <input
-                    type="text"
-                    placeholder="Buscar..."
-                    value={filtroOdontologo}
-                    onChange={handleFiltroOdontologoChange}
-                />
+                    <h4>Odontólogo</h4>
+                    <input
+                        type="text"
+                        placeholder="Buscar..."
+                        value={filtroOdontologo}
+                        onChange={handleFiltroOdontologoChange}
+                    />
                 </div>
 
                 <div id='obrasocial'>
-                <h4>Obra Social</h4>                
-                <input
-                    type="text"
-                    placeholder="Buscar..."
-                    value={filtroObraSocial}
-                    onChange={handleFiltroObraSocialChange}
-                />
+                    <h4>Obra Social</h4>
+                    <input
+                        type="text"
+                        placeholder="Buscar..."
+                        value={filtroObraSocial}
+                        onChange={handleFiltroObraSocialChange}
+                    />
                 </div>
 
                 <Link id='añadirentrega' to="/AñadirEntrega">
@@ -96,20 +105,26 @@ const EntregaDeBonos = ({ apiData }) => {
                             <td>{bono.inicio}</td>
                             <td>{bono.final}</td>
                             <td id="acciones">
-                            <Link to="/EditarEntrega" state={{id:bono.id}}>
-                                <button>Editar</button>
-                            </Link>
-                            <button onClick={() => borrar(bono.id)}>Borrar</button>  {/* Button to call a function 'borrar' with bono ID */}
+                                <Link to="/EditarEntrega" state={{ id: bono.id }}>
+                                    <button>Editar</button>
+                                </Link>
+                                <button onClick={() => borrar(bono.id)}>Borrar</button>
                             </td>
-             
-           
                         </tr>
                     ))}
                 </tbody>
             </table>
 
             <button id="volver"><Link id='link' to="/">Volver</Link></button>
-            
+
+            {/* Div para el mensaje de confirmación */}
+            {mostrarConfirmacion && (
+                <div className="confirmacion">
+                    <p>¿Estás seguro de que quieres eliminar este bono?</p>
+                    <button onClick={confirmarBorrado}>Eliminar</button>
+                    <button onClick={cancelarBorrado}>Cancelar</button>
+                </div>
+            )}
 
         </div>
     );

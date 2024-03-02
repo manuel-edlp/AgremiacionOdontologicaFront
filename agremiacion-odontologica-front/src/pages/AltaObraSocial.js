@@ -17,7 +17,7 @@ const AltaObraSocial = () => {
 
         try {
             // Enviar datos del odontólogo al servidor
-            const responseObraSocial = await axios.post('https://localhost:5002/Agremiacion/Odontologo/AltaObraSocial', datosObraSocial);
+            const responseObraSocial = await axios.post('https://localhost:5002/Agremiacion/ObraSocial/AltaObraSocial', datosObraSocial);
     
         } catch (error) {
             // Lógica para manejar un error
@@ -42,7 +42,7 @@ return (
             
             <div className="button-container">
                 <button id="volver"><Link id='link' to="/AñadirEntrega">Cancelar</Link></button>
-                <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
+                <button id="guardar" onClick={handleSubmit}><Link id='link' to="/AñadirEntrega">Guardar</Link></button>
             </div>
         </div>
     </div>

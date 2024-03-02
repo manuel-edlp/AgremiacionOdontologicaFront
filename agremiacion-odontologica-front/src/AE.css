@@ -15,17 +15,20 @@ h4 {
   margin-bottom: 5px;
 }
 
+#columna-2 {
+  display: flex;
+  justify-content: center; /* Centrar los elementos horizontalmente */
+}
+
+#desde,
 #hasta {
-  margin-top: 5px;
+  width: 28%; /* Ajustar el ancho según sea necesario */
+  margin: 0 -20px; /* Agregar margen entre los elementos */
 }
 
 input[type="number"] {
-  width: calc(15% - 20px);
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+  width: calc(50% - 40px); /* Ajustar el ancho del input */
+  padding: 5px;
 }
 
 input[type="text"],
@@ -200,6 +203,7 @@ background-color: #6a00d5;
 color: #ffffff; /* Cambia el color del texto del enlace a negro */
 text-decoration: none; /* Elimina el subrayado del enlace */
 }
+
 
 #obrasocial{
 display: inline-block;

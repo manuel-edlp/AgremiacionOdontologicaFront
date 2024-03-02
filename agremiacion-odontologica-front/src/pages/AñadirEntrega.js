@@ -174,8 +174,8 @@ const AñadirEntrega = () => {
                             onChange={(e) => setNumeroInicio(e.target.value)}
                         />
                     </div>
-                    <div>
-                        <h4 id='hasta'>Hasta</h4>
+                    <div id='hasta'>
+                        <h4>Hasta</h4>
                         <input
                             type="number"
                             value={final}

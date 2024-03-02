@@ -96,26 +96,24 @@ const EditarEntrega = () => {
     
         </div>
 
-        <div>
-          <div id='desde'>
-            <h4>Desde</h4>
-            <input
-              type="number"
-              placeholder="Número de Inicio..."
-              value={numeroInicio}
-              onChange={(e) => setNumeroInicio(e.target.value)}
-            />
+        <div id="columna-2">
+                    <div id='desde'>
+                        <h4>Desde</h4>
+                        <input
+                            type="number"
+                            value={inicio}
+                            onChange={(e) => setNumeroInicio(e.target.value)}
+                        />
+                    </div>
+                    <div id='hasta'>
+                        <h4>Hasta</h4>
+                        <input
+                            type="number"
+                            value={final}
+                            onChange={(e) => setNumeroFinal(e.target.value)}
+                        />
+                    </div>
           </div>
-          <div id='hasta'>
-            <h4>Hasta</h4>
-            <input
-              type="number"
-              placeholder="Número de Final..."
-              value={numeroFinal}
-              onChange={(e) => setNumeroFinal(e.target.value)}
-            />
-          </div>
-        </div>
 
         <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
         <button onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>

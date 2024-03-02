@@ -124,11 +124,11 @@ const AñadirEntrega = () => {
     return (
         <div>
             <h1>Entrega Bono</h1>
-            <div id="altaEntrega">
-                <div id="flex">
-                    <div id='odontologo' onClick={() => setShowOdontologosList(true)}>
-                        <h4>Odontólogo</h4>
-                        <div id="alinear">
+            <div id="altaEntrega" className="grid-container">
+                <div id="columna-1">
+                <div id='odontologo' onClick={() => setShowOdontologosList(true)}>
+                    <h4>Odontólogo</h4>
+                    <div id="alinear">
                         <input
                             type="text"
                             placeholder="Buscar odontólogo..."
@@ -145,16 +145,13 @@ const AñadirEntrega = () => {
                             </ul>
                         )}
                         <Link to="/AltaOdontologo">
-                        <button onClick={handleCrearOdontologoNuevo}>+</button>
-                    </Link>
+                            <button className="boton" onClick={handleCrearOdontologoNuevo}>+</button>
+                        </Link>
                     </div>
-                    </div>
-                    
                 </div>
-
-                <div>
-                    <div id='obrasocial'>
-                        <h4>Obra Social</h4>
+                <div id='obrasocial'>
+                    <h4>Obra Social</h4>
+                    <div id="alinear">
                         <select value={selectedObraSocial} onChange={handleSelectObraSocialChange}>
                             <option value="">Seleccione una obra social</option>
                             {obraSocialOptions.map((obraSocial) => (
@@ -163,10 +160,12 @@ const AñadirEntrega = () => {
                                 </option>
                             ))}
                         </select>
+                        <button id="boton2" onClick={handleCrearObraSocialNueva}>+</button>
                     </div>
-                    <button onClick={handleCrearObraSocialNueva}>+</button>
                 </div>
-                <div>
+
+                </div>
+                <div id="columna-2">
                     <div id='desde'>
                         <h4>Desde</h4>
                         <input

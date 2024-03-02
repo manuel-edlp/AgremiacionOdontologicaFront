@@ -200,6 +200,9 @@ background-color: #6a00d5;
 color: #ffffff; /* Cambia el color del texto del enlace a negro */
 text-decoration: none; /* Elimina el subrayado del enlace */
 }
+#columna{
+
+}
 
 #obrasocial{
 display: inline-block;
@@ -207,6 +210,9 @@ text-align: center;
 }
 #botoncito{
   margin-top: 17.5%;
+}
+.boton{
+  margin-left: 30%;
 }
 
 #alinear{
@@ -243,6 +249,13 @@ text-align: center;
 
 #odontologo ul li:hover {
   background-color: #f0f0f0;
+}
+
+#odontologo,#obrasocial{
+ margin: 4%;
+}
+#boton2{
+  margin-left:5%;
 }
 
 /* Media query para ajustar el ancho en pantallas más pequeñas */

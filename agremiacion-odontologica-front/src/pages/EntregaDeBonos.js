@@ -57,7 +57,7 @@ const EntregaDeBonos = ({ apiData }) => {
                 <h4>Odontólogo</h4>
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Buscar..."
                     value={filtroOdontologo}
                     onChange={handleFiltroOdontologoChange}
                 />
@@ -67,7 +67,7 @@ const EntregaDeBonos = ({ apiData }) => {
                 <h4>Obra Social</h4>                
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Buscar..."
                     value={filtroObraSocial}
                     onChange={handleFiltroObraSocialChange}
                 />

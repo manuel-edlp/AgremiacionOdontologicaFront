@@ -10,7 +10,7 @@ import AltaObraSocial from './pages/AltaObraSocial';
 import Inicio from './pages/Inicio';
 import Volver from './pages/Volver';
 import React, { useEffect, useState, useRef } from 'react';
-import ConfirmationModal from './pages/ConfirmationModal';
+
 
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
           <Route path="EditarEntrega" element={<EditarEntrega/>}/>
           <Route path="AltaOdontologo" element={<AltaOdontologo/>} />
           <Route path="AltaObraSocial" element={<AltaObraSocial/>} />
-          <Route path="ConfirmationModal" element={<ConfirmationModal/>} />
           <Route path="/" element={<Volver />} />
         </Route>
       </Routes>

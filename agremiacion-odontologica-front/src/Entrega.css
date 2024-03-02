@@ -1,4 +1,31 @@
 /* Estilos generales */
+
+
+.confirmacion{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #9933ff;
+border-radius: 8px;
+border: 3px solid #333 ;
+height: 85px;
+}
+
+.confirmacion button{
+  margin-bottom: 10px;
+  margin-left: 20px;
+
+
+}
+#eliminar{
+background-color: #f44336;
+}
+#cancelar{
+background-color: #f9f9f9;
+color: black;
+}
+
+
 .lista {
     margin: 20px auto;
     max-width: 800px;

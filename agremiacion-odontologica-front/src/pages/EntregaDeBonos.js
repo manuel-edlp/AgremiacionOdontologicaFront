@@ -86,6 +86,14 @@ const EntregaDeBonos = ({ apiData }) => {
                     <button id="botoncito">Añadir entrega</button>
                 </Link>
             </div>
+             {/* Div para el mensaje de confirmación */}
+             {mostrarConfirmacion && (
+                <div className="confirmacion">
+                    <p>¿Estás seguro de que quieres eliminar este bono?</p>
+                    <button id="eliminar" onClick={confirmarBorrado}>Eliminar</button>
+                    <button id="cancelar" onClick={cancelarBorrado}>Cancelar</button>
+                </div>
+            )}
             <br></br>
             <table className="table table-hover table-dark">
                 <thead>
@@ -117,14 +125,7 @@ const EntregaDeBonos = ({ apiData }) => {
 
             <button id="volver"><Link id='link' to="/">Volver</Link></button>
 
-            {/* Div para el mensaje de confirmación */}
-            {mostrarConfirmacion && (
-                <div className="confirmacion">
-                    <p>¿Estás seguro de que quieres eliminar este bono?</p>
-                    <button onClick={confirmarBorrado}>Eliminar</button>
-                    <button onClick={cancelarBorrado}>Cancelar</button>
-                </div>
-            )}
+           
 
         </div>
     );

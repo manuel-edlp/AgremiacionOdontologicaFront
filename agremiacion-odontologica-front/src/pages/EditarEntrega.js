@@ -101,7 +101,7 @@ const EditarEntrega = () => {
                         <h4>Desde</h4>
                         <input
                             type="number"
-                            value={inicio}
+                            value={numeroInicio}
                             onChange={(e) => setNumeroInicio(e.target.value)}
                         />
                     </div>
@@ -109,7 +109,7 @@ const EditarEntrega = () => {
                         <h4>Hasta</h4>
                         <input
                             type="number"
-                            value={final}
+                            value={numeroFinal}
                             onChange={(e) => setNumeroFinal(e.target.value)}
                         />
                     </div>

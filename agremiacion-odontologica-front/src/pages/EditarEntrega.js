@@ -31,25 +31,37 @@ const EditarEntrega = () => {
     fetchObrasSociales();
   }, []);
 
-  useEffect(() => {
-    setIdEntrega(id);
-  }, [id]);
+
 
   const handleSubmit = async () => {
     const data = {
-      odontologo: odontologoSeleccionado,
+      nombre: odontologoSeleccionado.nombre,
+      apellido: odontologoSeleccionado.apellido,
       obraSocial: obraSocialSeleccionada,
       numeroInicio: numeroInicio,
       numeroFinal: numeroFinal,
     };
 
-    await axios.put(`https://localhost:5002/Agremiacion/Entrega/${id}`, data);
+    await axios.put(`https://localhost:5002/Agremiacion/Entrega/${id}`,data);
 
 
   };
 
-  const entrega = axios.get(`https://localhost:5002/Agremiacion/Entrega/getEntregaById/${id}`);
-  console.log(entrega);
+  useEffect(() => {
+    const fetchEntrega = async () => {
+      const response = await axios.get(`https://localhost:5002/Agremiacion/Entrega/getEntregaById/${id}`);
+      const entrega = response.data;
+  
+      // Setear los valores de los campos con los datos de la entrega
+      setOdontologoSeleccionado(entrega.odontologo.id);
+      setObraSocialSeleccionada(entrega.obraSocial);
+      setNumeroInicio(entrega.inicio);
+      setNumeroFinal(entrega.final);
+    };
+  
+    fetchEntrega();
+  },[id]);
+
   return (
     <div>
       <h1>Editar Entrega Bono</h1>

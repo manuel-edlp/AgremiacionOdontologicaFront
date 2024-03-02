@@ -7,7 +7,7 @@ const EditarEntrega = () => {
 
   const location = useLocation();
   const {id} = location.state;
-  console.log(id);
+
   const [odontologoSeleccionado, setOdontologoSeleccionado] = useState('');
   const [obraSocialSeleccionada, setObraSocialSeleccionada] = useState('');
   const [numeroInicio, setNumeroInicio] = useState('');
@@ -51,10 +51,13 @@ const EditarEntrega = () => {
     const fetchEntrega = async () => {
       const response = await axios.get(`https://localhost:5002/Agremiacion/Entrega/getEntregaById/${id}`);
       const entrega = response.data;
-  
+      const nombre = entrega.obraSocial.nombre;
+      const idObra = await axios.get(`https://localhost:5002/Agremiacion/ObraSocial/getIdObraSocial/${nombre}`);
+
       // Setear los valores de los campos con los datos de la entrega
       setOdontologoSeleccionado(entrega.odontologo.id);
-      setObraSocialSeleccionada(entrega.obraSocial);
+      console.log(obraSocialSeleccionada);
+      setObraSocialSeleccionada(idObra.data);
       setNumeroInicio(entrega.inicio);
       setNumeroFinal(entrega.final);
     };

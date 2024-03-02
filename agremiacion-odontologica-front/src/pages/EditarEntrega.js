@@ -113,7 +113,7 @@ const EditarEntrega = () => {
                             onChange={(e) => setNumeroFinal(e.target.value)}
                         />
                     </div>
-          </div>
+        </div>
 
         <button id="volver"><Link id='link' to="/EntregaDeBonos">Cancelar</Link></button>
         <button onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>

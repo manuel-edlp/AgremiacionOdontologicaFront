@@ -9,7 +9,6 @@ const AltaOdontologo = () => {
     const [apellido, setApellido] = useState('');
     const [dni, setDni] = useState('');
     const [matricula, setMatricula] = useState('');
-    const [estado, setEstado] = useState('');
     const [provincia, setProvincia] = useState('');
     const [localidad, setLocalidad] = useState('');
     const [calle, setCalle] = useState('');
@@ -27,7 +26,6 @@ const AltaOdontologo = () => {
             apellido,
             dni,
             matricula,
-            estado
         };
     
         try {
@@ -113,16 +111,6 @@ const AltaOdontologo = () => {
                         <input id='ao' type="text" value={matricula} onChange={(e) => setMatricula(e.target.value)} />
                     </div>
                 </div>
-                <div className="row">
-                    <div>
-                        <h4>Estado</h4>
-                        <select value={estado} onChange={(e) => setEstado(e.target.value)}>
-                            <option value="">Seleccione un estado</option>
-                            <option value="Agremiado">Agremiado</option>
-                            <option value="No Agremiado">No Agremiado</option>
-                        </select>
-                    </div>
-                </div>
                 <h4>Domicilio</h4>
                 <div className="row">
                     <div>
@@ -162,7 +150,7 @@ const AltaOdontologo = () => {
                 </div>
                 <div className="button-container">
                     <button id="volver"><Link id='link' to="/AñadirEntrega">Cancelar</Link></button>
-                    <button id="guardar" onClick={handleSubmit}><Link id='link' to="/EntregaDeBonos">Guardar</Link></button>
+                    <button id="guardar" onClick={handleSubmit}><Link id='link' to="/AñadirEntrega">Guardar</Link></button>
                 </div>
             </div>
         </div>

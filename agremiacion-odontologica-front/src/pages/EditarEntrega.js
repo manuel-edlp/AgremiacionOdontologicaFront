@@ -101,7 +101,7 @@ const EditarEntrega = () => {
     
         </div>
 
-        <div>
+        <div id="columna-2">
           <div id='desde'>
             <h4>Desde</h4>
             <input

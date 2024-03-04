@@ -169,7 +169,7 @@ const AñadirEntrega = () => {
                 </div>
                 <div id="columna-2">
                     <div id='desde'>
-                        <h4>Desde</h4>
+                        <h4>Desde el Nº</h4>
                         <input
                             type="number"
                             value={inicio}
@@ -177,7 +177,7 @@ const AñadirEntrega = () => {
                         />
                     </div>
                     <div id='hasta'>
-                        <h4>Hasta</h4>
+                        <h4>Hasta el Nº</h4>
                         <input
                             type="number"
                             value={final}

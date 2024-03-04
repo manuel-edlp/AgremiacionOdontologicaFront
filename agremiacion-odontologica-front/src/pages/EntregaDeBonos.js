@@ -100,8 +100,8 @@ const EntregaDeBonos = ({ apiData }) => {
                     <tr>
                         <th scope="col">Odontologo</th>
                         <th scope="col">Obra Social</th>
-                        <th scope="col">Inicio</th>
-                        <th scope="col">Final</th>
+                        <th scope="col">Desde el Nº</th>
+                        <th scope="col">Hasta el Nº</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
